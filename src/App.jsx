@@ -8,9 +8,12 @@ import Pagination from './pagination';
 
 function App() {
   const [posts, setPosts] = useState([])
+
   const [loading, setLoading] = useState(false)
+
   const [currentPage, setCurrentPage] = useState(1)
-  const [postPerPage, setPostPerPage] = useState(10)
+
+  let postPerPage = 10
 
 
   useEffect(() => {
@@ -18,8 +21,8 @@ function App() {
       setLoading(true)
       const res = await axios.get('https://jsonplaceholder.typicode.com/posts')
 
-      setPosts(res.data)
       setLoading(false)
+      setPosts(res.data)
     }
     fetchPosts()
 
